@@ -1,0 +1,31 @@
+.title {
+    -unity-font-definition: url("project://database/Assets/Art/tappyplane/Font/kenvector_future.ttf?fileID=12800000&guid=134c0638bcd726d46b63fa161ee7f046&type=3#kenvector_future");
+    font-size: 60px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+}
+
+.btn {
+    background-image: url("project://database/Assets/Art/tappyplane/UI/buttonLarge.png?fileID=2800000&guid=fc83c02de43b95d46bfb94b9ff314946&type=3#buttonLarge");
+    width: 250px;
+    height: 200px;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-out-circ;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.btn:hover {
+    scale: 1.1 1.1;
+}
