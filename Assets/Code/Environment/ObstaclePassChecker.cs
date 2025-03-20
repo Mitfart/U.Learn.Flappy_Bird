@@ -8,7 +8,8 @@ namespace Code.Environment {
       private BoxCollider _collider;
       private Transform   _body;
       private Score       _score;
-      private int         _reward;
+
+      private int _reward = 1;
 
 
 
@@ -16,6 +17,13 @@ namespace Code.Environment {
          _body               = transform;
          _collider           = GetComponent<BoxCollider>();
          _collider.isTrigger = true;
+      }
+
+      private void OnTriggerExit(Collider other) {
+         if (!other.TryGetComponent(out Hero.Hero _))
+            return;
+
+         _score.Increase(_reward);
       }
 
 
@@ -27,13 +35,6 @@ namespace Code.Environment {
          _collider.center = Vector3.up * (height * .5f);
          _collider.size   = new Vector3(width, height, deapth);
          return this;
-      }
-
-      private void OnTriggerExit(Collider other) {
-         if (!other.TryGetComponent(out Hero.Hero _))
-            return;
-
-         _score.Increase(_reward);
       }
 
       public void SetReward(Score score, int reward = 1) {

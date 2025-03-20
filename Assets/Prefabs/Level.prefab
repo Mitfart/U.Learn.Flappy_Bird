@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5871643367700956104}
   - component: {fileID: 4762025455503362832}
+  - component: {fileID: 7201984402715974389}
   m_Layer: 0
   m_Name: BG
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 1.3888888, y: 1.3888888, z: 1.3888888}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5029535751263973710}
@@ -81,12 +82,31 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 8.64, y: 4.32}
+  m_Size: {x: 17.066671, y: 4.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7201984402715974389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2400140472762810609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 169095675ec74ebda0fc3d6303a59191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  repeatSize: 8
+  <ParallaxFactor>k__BackingField: 0.5
+  image: {fileID: 4762025455503362832}
+  refSize: {x: 8, y: 4.8}
+  width: 10.66667
+  height: 6
 --- !u!1 &3557436116874959264
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,12 +154,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b333ec3e809d451383d6699ec15e414e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 12
-  height: 6
+  <BaseSpeed>k__BackingField: 2
+  <SpeedScale>k__BackingField: 1
+  <Height>k__BackingField: 6
+  <HeroSpawnPoint>k__BackingField: 0.18
   wallBot: {fileID: 6917145985587655418}
   wallTop: {fileID: 8512041886201556942}
-  background: {fileID: 4762025455503362832}
-  speed: 2
+  background: {fileID: 7201984402715974389}
 --- !u!1001 &6182891744675484794
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -148,13 +169,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5029535751263973710}
     m_Modifications:
-    - target: {fileID: -8489099580583221632, guid: c2b3696535f8bc3459bb9c5f7322447e, type: 3}
-      propertyPath: size
-      value: 20.08
-      objectReference: {fileID: 0}
     - target: {fileID: 1261607050786946184, guid: c2b3696535f8bc3459bb9c5f7322447e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.04
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1261607050786946184, guid: c2b3696535f8bc3459bb9c5f7322447e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -192,21 +209,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2168104659605660331, guid: c2b3696535f8bc3459bb9c5f7322447e, type: 3}
-      propertyPath: m_Size.x
-      value: 20.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 2657192518900061912, guid: c2b3696535f8bc3459bb9c5f7322447e, type: 3}
-      propertyPath: m_Size.x
-      value: 20.08
-      objectReference: {fileID: 0}
     - target: {fileID: 4690823582860247433, guid: c2b3696535f8bc3459bb9c5f7322447e, type: 3}
       propertyPath: m_Name
       value: Wall_Bot
-      objectReference: {fileID: 0}
-    - target: {fileID: 8975346412835687256, guid: c2b3696535f8bc3459bb9c5f7322447e, type: 3}
-      propertyPath: m_Size.x
-      value: 20.08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -237,13 +242,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5029535751263973710}
     m_Modifications:
-    - target: {fileID: -8489099580583221632, guid: c2b3696535f8bc3459bb9c5f7322447e, type: 3}
-      propertyPath: size
-      value: 20.08
-      objectReference: {fileID: 0}
     - target: {fileID: 1261607050786946184, guid: c2b3696535f8bc3459bb9c5f7322447e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.04
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1261607050786946184, guid: c2b3696535f8bc3459bb9c5f7322447e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -281,21 +282,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
-    - target: {fileID: 2168104659605660331, guid: c2b3696535f8bc3459bb9c5f7322447e, type: 3}
-      propertyPath: m_Size.x
-      value: 20.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 2657192518900061912, guid: c2b3696535f8bc3459bb9c5f7322447e, type: 3}
-      propertyPath: m_Size.x
-      value: 20.08
-      objectReference: {fileID: 0}
     - target: {fileID: 4690823582860247433, guid: c2b3696535f8bc3459bb9c5f7322447e, type: 3}
       propertyPath: m_Name
       value: Wall_Top
-      objectReference: {fileID: 0}
-    - target: {fileID: 8975346412835687256, guid: c2b3696535f8bc3459bb9c5f7322447e, type: 3}
-      propertyPath: m_Size.x
-      value: 20.08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

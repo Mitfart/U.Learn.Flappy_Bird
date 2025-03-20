@@ -1,0 +1,12 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Style/style.uss?fileID=7433441132597879392&amp;guid=731cc037fe3580f488e122a9f39b9c80&amp;type=3#style" />
+    <engine:Button name="tap__btn" class="btn_fullscreeen">
+        <engine:VisualElement name="tap__conteiner" class="tap__conteiner">
+            <engine:VisualElement name="tap__bars" class="tap__bars">
+                <engine:VisualElement name="tap__bar_left" class="tap__bar" style="background-image: url(&quot;project://database/Assets/Plugins/Art/tappyplane/UI/tapRight.png?fileID=21300000&amp;guid=b56703d939ccc684a9f9c6eb21cfce25&amp;type=3#tapRight&quot;);" />
+                <engine:VisualElement name="tap__bar_right" class="tap__bar" style="background-image: url(&quot;project://database/Assets/Plugins/Art/tappyplane/UI/tapLeft.png?fileID=21300000&amp;guid=22f3ecdd97fe7eb4394f49794af407b7&amp;type=3#tapLeft&quot;);" />
+            </engine:VisualElement>
+            <engine:VisualElement name="tap__hand" class="tap__hand" />
+        </engine:VisualElement>
+    </engine:Button>
+</engine:UXML>

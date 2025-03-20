@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 namespace Code.Infrastructure {
-   public class Render : MonoBehaviour {
+   [Serializable]
+   public class Render {
       public Camera cam;
    }
 }

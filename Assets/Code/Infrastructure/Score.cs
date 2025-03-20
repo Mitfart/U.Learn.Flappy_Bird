@@ -2,10 +2,11 @@ using System;
 using UnityEngine;
 
 namespace Code.Infrastructure {
-   public class Score : MonoBehaviour {
+   [Serializable]
+   public class Score {
       public event Action<int> OnChange;
 
-      private int _score;
+      [SerializeField] private int score;
 
 
 
@@ -13,9 +14,9 @@ namespace Code.Infrastructure {
          if (amount <= 0)
             return this;
 
-         _score += amount;
+         score += amount;
 
-         OnChange?.Invoke(_score);
+         OnChange?.Invoke(score);
          return this;
       }
 
@@ -23,14 +24,12 @@ namespace Code.Infrastructure {
          if (amount >= 0)
             return this;
 
-         _score += amount; // "+", because amount already negative digit
+         score += amount; // "+", because amount already negative digit
 
-         OnChange?.Invoke(_score);
+         OnChange?.Invoke(score);
          return this;
       }
 
-      public int Get() {
-         return _score;
-      }
+      public int Get() => score;
    }
 }

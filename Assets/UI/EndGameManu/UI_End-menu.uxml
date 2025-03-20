@@ -1,0 +1,7 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Style/style.uss?fileID=7433441132597879392&amp;guid=731cc037fe3580f488e122a9f39b9c80&amp;type=3#style" />
+    <engine:Button name="end__btn_restart" class="btn_fullscreeen end__btn">
+        <engine:VisualElement name="end__title" class="gameover" style="margin-bottom: 25px;" />
+        <engine:Label text="Tap to restart" name="end__text" class="end__text" />
+    </engine:Button>
+</engine:UXML>

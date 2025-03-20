@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 407722152245634018, guid: c10929fc1d094154d9981597e3763751, type: 3}
-  scaleRatio: {x: 0.8, y: 1.6}
+  - {fileID: 8292581220479621878, guid: c10929fc1d094154d9981597e3763751, type: 3}
+  scaleRatio: {x: 0.8, y: 1.2}
   tiltRatio: 5
-  frequancy: 3
+  frequency: 1.5
   topObstaclesChance: 0.5
+  reward: 1

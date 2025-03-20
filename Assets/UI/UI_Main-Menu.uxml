@@ -1,9 +1,0 @@
-<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI/Style/style.uss?fileID=7433441132597879392&amp;guid=731cc037fe3580f488e122a9f39b9c80&amp;type=3#style" />
-    <engine:VisualElement style="flex-grow: 1;">
-        <engine:VisualElement style="top: 50%; position: absolute; left: 50%; translate: -50% -50%;">
-            <engine:Label text="MAIN MENU" name="Title" class="title" />
-            <engine:Button text="TEST" name="btn_test" class="btn title" style="width: 400px; align-self: center; height: 100px;" />
-        </engine:VisualElement>
-    </engine:VisualElement>
-</engine:UXML>

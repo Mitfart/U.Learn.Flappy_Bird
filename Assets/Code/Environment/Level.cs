@@ -3,79 +3,79 @@ using UnityEngine;
 
 namespace Code.Environment {
    public class Level : MonoBehaviour {
-      public float          width  = 20;
-      public float          height = 10;
-      public Wall           wallBot;
-      public Wall           wallTop;
-      public SpriteRenderer background;
-      public float          speed = 1f;
+      [field: SerializeField] public float Height { get; private set; } = 10;
 
-      private Render _render;
+      [SerializeField] private Wall       wallBot;
+      [SerializeField] private Wall       wallTop;
+      [SerializeField] private Background background;
+
+      private Render       _render;
+      private SpeedManager _speed;
+
+      public float Width      { get; private set; }
+      public float HalfHeight => Height * .5f;
 
 
 
-      public Level Construct(Render render) {
+      public Level Construct(Render render, SpeedManager speedManager) {
          _render = render;
+         _speed  = speedManager;
+
+         SyncScene();
+
+         _speed.OnChangeSpeed += SetSpeed;
          return this;
       }
 
-      private void Update() {
-         MoveWalls();
-      }
-
-      private void OnValidate() => SetSize(width, height);
-
-
-
-      private void SetSize(float w, float h) {
-         if (float.IsNaN(w)
-          || float.IsNaN(h)
-          || w <= 0f
-          || h <= 0f)
+      private void OnValidate() {
+         if (float.IsNaN(Height)
+          || Height  <= 0f
+          || _render == null
+          || !_render.cam)
             return;
 
-         width  = w;
-         height = h;
+         SyncScene();
+      }
 
-         SyncWalls();
-         SyncBg();
+
+
+      private void SyncScene() {
          SyncCamera();
+         SyncBackground();
+         SyncWalls();
+         SetSpeed(_speed.Get());
       }
 
 
+      private void SyncCamera() {
+         _render.cam.orthographicSize = Height * .5f;
 
-      private void MoveWalls() {
-         float time       = !Application.isPlaying ? 0f : Time.time * speed;
-         float halfHeight = height * .5f;
-
-         wallBot.transform.position = halfHeight * Vector3.down + Vector3.right * (wallBot.RepeatSize * .5f - time % wallBot.RepeatSize);
-         wallTop.transform.position = halfHeight * Vector3.up   + Vector3.right * (wallBot.RepeatSize * .5f - time % wallTop.RepeatSize);
+         Width = _render.cam.aspect * Height;
       }
 
+
+      private void SyncBackground() {
+         background.SetSize(Width, Height);
+      }
 
 
       private void SyncWalls() {
-         wallBot.SetSize(width + wallBot.RepeatSize);
-         wallTop.SetSize(width + wallTop.RepeatSize);
+         wallBot.SetSize(Width);
+         wallTop.SetSize(Width);
 
-         MoveWalls();
+         SyncWallsPos();
       }
 
-      private void SyncBg() {
-         Vector2 bgSize = background.size;
-
-         float scale = height / bgSize.y;
-         background.transform.localScale = scale * Vector3.one;
-
-         bgSize.x        = width / scale;
-         background.size = bgSize;
+      private void SyncWallsPos() {
+         wallTop.transform.SetPositionY(+HalfHeight);
+         wallBot.transform.SetPositionY(-HalfHeight);
       }
 
-      private void SyncCamera() {
-         if (!_render || !_render.cam)
-            return;
 
-         _render.cam.orthographicSize = height * .5f;
+      private void SetSpeed(float speed) {
+         background.speed       = speed;
+         wallBot.parallax.speed = speed;
+         wallTop.parallax.speed = speed;
       }
    }
 }

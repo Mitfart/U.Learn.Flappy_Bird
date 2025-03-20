@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 
 namespace Code.Hero {
    public class HeroMovement : MonoBehaviour {
       private const float _GRAVITY = -9.81f;
+
+      public event Action OnJump;
 
       public CharacterController cc;
 
@@ -15,16 +18,18 @@ namespace Code.Hero {
 
 
       private void FixedUpdate() {
-         if (!cc.isGrounded)
-            ApplyGravity();
-
+         ApplyGravity();
          ClampVelocity();
          MovePlayer();
       }
 
 
 
-      public void Jump() => Velocity = Mathf.Sqrt(jumpHeight * -2f * (_GRAVITY * gravityScale));
+      public void Jump() {
+         Velocity = Mathf.Sqrt(jumpHeight * -2f * (_GRAVITY * gravityScale)); // Formula of physics
+
+         OnJump?.Invoke();
+      }
 
 
 

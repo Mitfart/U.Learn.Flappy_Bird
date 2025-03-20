@@ -4,42 +4,47 @@ using UnityEngine;
 namespace Code.Environment {
    [RequireComponent(typeof(BoxCollider))]
    public class Wall : MonoBehaviour {
-      [SerializeField] private float          size;
-      [SerializeField] private SpriteRenderer surface;
       [SerializeField] private SpriteRenderer fill;
-      [SerializeField] private BoxCollider    surfaceCollider;
+      [SerializeField] public  Vector2        refFillSize;
+      [SerializeField] private SpriteRenderer surface;
+      [SerializeField] public  Vector2        refSurfaceSize;
+      [SerializeField] private BoxCollider    deathZone;
 
-      [field: SerializeField] public float RepeatSize { get; private set; }
+      public AutoParallax parallax;
+
+      private float _size;
 
 
 
       private void OnValidate() {
-         surfaceCollider = surfaceCollider.IsUnityNull() ? GetComponent<BoxCollider>() : surfaceCollider;
-         
-         Redraw();
+         deathZone = deathZone.IsUnityNull()
+            ? GetComponent<BoxCollider>()
+            : deathZone;
       }
 
 
 
       public void SetSize(float width) {
-         size = width;
+         _size = width * 2f;
          Redraw();
       }
 
 
 
       private void Redraw() {
-         Vector2 wallSize;
+         Vector2 s;
 
-         wallSize     = surface.size;
-         wallSize.x   = size;
-         surface.size = wallSize;
+         s         = refFillSize;
+         s.x       = _size;
+         fill.size = s;
 
-         wallSize   = fill.size;
-         wallSize.x = size;
-         fill.size  = wallSize;
+         s            = refSurfaceSize;
+         s.x          = _size;
+         surface.size = s;
 
-         surfaceCollider.size = wallSize;
+         Vector3 cs = deathZone.size;
+         cs.x           = _size;
+         deathZone.size = cs;
       }
    }
 }
